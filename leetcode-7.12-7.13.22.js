@@ -46,3 +46,40 @@ var findAnagrams = function(str, p) {
    }
    return result
 }
+
+
+
+
+
+// 496. Next Greater Element I
+var nextGreaterElement = function(nums1, nums2) {
+    let output = []
+    // iterate through nums1 to find matching number in nums2
+    // if found, iterate through nums2 going forward to find next greater digit
+    // if not found, input -1
+    
+    for (let i = 0 ; i < nums1.length ; i++) {
+        for (let j = 0 ; j < nums2.length ; j++) {     //4
+           
+                // if found a match
+                if ( nums1[i] === nums2[j] ) {
+                      let num2Placement = j           //2
+                      let found = false
+                       // check if there is a larger number    2  <  4 
+                      while ( num2Placement < nums2.length ) {
+                            if ( nums1[i] < nums2[num2Placement] ) {
+                                output.push( nums2[num2Placement] )
+                                found = true
+                                break;
+                            } 
+                            num2Placement++
+                    } 
+                    if (!found) {
+                        output.push( -1 )
+                    }
+                    
+                } 
+        }
+    }
+    return output
+};
